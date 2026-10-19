@@ -1,0 +1,219 @@
+/* ==========================================================================
+   1. VARIABLES DE DISEÑO (Para cambiar colores y fuentes globalmente)
+   ========================================================================== */
+:root {
+    --color-principal: #4f46e5;      /* Morado índigo moderno */
+    --color-principal-hover: #4338ca;
+    --color-secundario: #06b6d4;     /* Turquesa */
+    --color-fondo: #f8fafc;          /* Gris azulado muy claro */
+    --color-superficie: #ffffff;     /* Blanco para tarjetas y contenedores */
+    --color-texto-oscuro: #0f172a;   /* Casi negro para títulos */
+    --color-texto-mutado: #64748b;   /* Gris para textos secundarios */
+    --color-borde: #e2e8f0;          /* Gris claro para líneas y bordes */
+    
+    --fuente-base: 'Inter', system-ui, -apple-system, sans-serif;
+    --sombra-suave: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --sombra-alta: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --radio-borde: 12px;
+}
+
+/* ==========================================================================
+   2. RESETEO DE ESTILOS Y AJUSTES GLOBALES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces */
+}
+
+body {
+    font-family: var(--fuente-base);
+    background-color: var(--color-fondo);
+    color: var(--color-texto-oscuro);
+    line-height: 1.7;
+    padding-top: 80px; /* Espacio para evitar que el menú fijo tape el contenido */
+}
+
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (HEADER FIJO)
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(107, 105, 255, 0.849);
+    backdrop-filter: blur(10px); /* Efecto de fondo borroso moderno */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-principal);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-texto-mutado);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-principal);
+}
+
+/* ==========================================================================
+   4. DISEÑO DE DISEÑO COMPARTIDO (CONTENEDORES Y REJILLAS)
+   ========================================================================== */
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Rejilla automática que se adapta al tamaño de la pantalla */
+.grid-autoadaptable {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* ==========================================================================
+   5. COMPONENTES: TARJETAS (CARDS)
+   ========================================================================== */
+.tarjeta-premium {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    padding: 30px;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-alta);
+}
+
+.tarjeta-premium h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    color: var(--color-texto-oscuro);
+}
+
+/* ==========================================================================
+   6. COMPONENTES: BOTONES Y ENLACES ACCIÓN
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-principal {
+    background-color: var(--color-principal);
+    color: #ffffff;
+}
+
+.btn-principal:hover {
+    background-color: var(--color-principal-hover);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: var(--color-principal);
+    border: 2px solid var(--color-principal);
+}
+
+.btn-secundario:hover {
+    background-color: var(--color-principal);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   7. FORMULARIOS ESTILIZADOS
+   ========================================================================== */
+.formulario-grupo {
+    margin-bottom: 20px;
+}
+
+.formulario-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-texto-oscuro);
+}
+
+.input-control {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 2px solid var(--color-borde);
+    border-radius: 8px;
+    background-color: var(--color-superficie);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+/* Estado de enfoque iluminado */
+.input-control:focus {
+    border-color: var(--color-principal);
+}
+
+/* ==========================================================================
+   8. FOOTER (PIE DE PÁGINA)
+   ========================================================================== */
+.pie-pagina {
+    background-color: var(--color-texto-oscuro);
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   9. RESPONSIVE DESIGN (Pantallas Pequeñas / Celulares)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Esconde el menú tradicional para crear uno de hamburguesa en JS */
+    }
+    
+    body {
+        padding-top: 90px;
+    }
+    
+    .contenedor {
+        padding: 20px 15px;
+    }
+}
